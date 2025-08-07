@@ -11,6 +11,21 @@ importers:
       '@ai-sdk/openai':
         specifier: ^2.0.4
         version: 2.0.4(zod@3.25.76)
+      '@fontsource/comforter-brush':
+        specifier: ^5.2.6
+        version: 5.2.6
+      '@fontsource/dancing-script':
+        specifier: ^5.2.6
+        version: 5.2.6
+      '@fontsource/great-vibes':
+        specifier: ^5.2.6
+        version: 5.2.6
+      '@fontsource/pacifico':
+        specifier: ^5.2.6
+        version: 5.2.6
+      '@fontsource/satisfy':
+        specifier: ^5.2.6
+        version: 5.2.6
       '@radix-ui/react-dialog':
         specifier: ^1.1.14
         version: 1.1.14(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -47,6 +62,9 @@ importers:
       framer-motion:
         specifier: ^12.23.12
         version: 12.23.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      google:
+        specifier: link:@next/font/google
+        version: link:@next/font/google
       lucide-react:
         specifier: ^0.536.0
         version: 0.536.0(react@19.1.0)
@@ -409,6 +427,21 @@ packages:
 
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
+
+  '@fontsource/comforter-brush@5.2.6':
+    resolution: {integrity: sha512-cYtjGBtsFetVGZXsQe+hR0LwB2qyoUliQJXQ5XqDU7qbeeiEPgLFjjlZ4qCU2pRjwwUvDV90KmKTRxQIWQNDdQ==}
+
+  '@fontsource/dancing-script@5.2.6':
+    resolution: {integrity: sha512-W6hAg34v1AyX10ijrBKMf0jg6V641RpylfBi1oXG1pzKgi+z2cpl0N9UDKDHoedpWnajjMuT6MgoaJvFxVAW5w==}
+
+  '@fontsource/great-vibes@5.2.6':
+    resolution: {integrity: sha512-DdyS+X+4hLt+YYj3r+2baxSeV4Fah/hn1+588GqSp6Y1QdVFjpYLrChhBuMneP868Z/VHfwYQ4J2ney3zog97w==}
+
+  '@fontsource/pacifico@5.2.6':
+    resolution: {integrity: sha512-fiFNIwcG96tXG+B3Bc3pbSzFooqYAXr2+GeiqkgufXrVE/WAlKx8DHHL/km8HRP1FzRJUp12ZJX7YPogbfU0Ng==}
+
+  '@fontsource/satisfy@5.2.6':
+    resolution: {integrity: sha512-W3zcVpOzEZpYjdCWyfIFsW2NWoerot0oqKb4XDn2E1N/LVZE/64CHF36/SOjGqQvUXilAlJifyZhCFwlTqpdaw==}
 
   '@grpc/grpc-js@1.9.15':
     resolution: {integrity: sha512-nqE7Hc0AzI+euzUwDAy0aY5hCp10r734gMGRdU+qOPX0XSceI2ULrcXB5U2xSc5VkWwalCj4M7GzCAygZl2KoQ==}
@@ -3170,6 +3203,16 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
 
   '@floating-ui/utils@0.2.10': {}
+
+  '@fontsource/comforter-brush@5.2.6': {}
+
+  '@fontsource/dancing-script@5.2.6': {}
+
+  '@fontsource/great-vibes@5.2.6': {}
+
+  '@fontsource/pacifico@5.2.6': {}
+
+  '@fontsource/satisfy@5.2.6': {}
 
   '@grpc/grpc-js@1.9.15':
     dependencies:

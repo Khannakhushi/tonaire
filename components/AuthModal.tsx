@@ -16,17 +16,24 @@ import { FcGoogle } from "react-icons/fc";
 export function AuthModal({
   open,
   onOpenChange,
+  initialMode,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  initialMode?: "login" | "signup";
 }) {
   const { loginWithGoogle, loginWithEmail, signupWithEmail } = useUser();
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(initialMode !== "signup");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  React.useEffect(() => {
+    if (initialMode === "signup") setIsLogin(false);
+    else setIsLogin(true);
+  }, [initialMode, open]);
 
   const handleGoogle = async () => {
     setLoading(true);

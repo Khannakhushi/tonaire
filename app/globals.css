@@ -136,6 +136,19 @@
   font-family: var(--font-inter);
 }
 
+.font-calligraphy {
+  font-family: "Pacifico", "Dancing Script", "Great Vibes", cursive,
+    var(--font-cormorant), serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.font-cool {
+  font-family: var(--font-inter), "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
 .gradient-tonaire {
   background: linear-gradient(
     135deg,

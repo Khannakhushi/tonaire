@@ -15,6 +15,8 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  updateProfile,
+  reload, // <-- add this import
 } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
@@ -47,16 +49,22 @@ export function UserProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
+        // Fetch Firestore user doc
+        const userRef = doc(db, "users", firebaseUser.uid);
+        const userSnap = await getDoc(userRef);
+        let displayName = firebaseUser.displayName;
+        if (userSnap.exists()) {
+          const data = userSnap.data();
+          if (data.displayName) displayName = data.displayName;
+        }
         const userData: User = {
           uid: firebaseUser.uid,
           email: firebaseUser.email,
-          displayName: firebaseUser.displayName,
+          displayName: displayName,
           photoURL: firebaseUser.photoURL,
         };
         setUser(userData);
         // Ensure user doc exists in Firestore
-        const userRef = doc(db, "users", firebaseUser.uid);
-        const userSnap = await getDoc(userRef);
         if (!userSnap.exists()) {
           await setDoc(userRef, {
             email: firebaseUser.email,
@@ -89,11 +97,20 @@ export function UserProvider({ children }: { children: ReactNode }) {
   ) => {
     const result = await createUserWithEmailAndPassword(auth, email, password);
     if (displayName) {
+      await updateProfile(result.user, { displayName });
+      await reload(result.user);
       await setDoc(doc(db, "users", result.user.uid), {
         email,
         displayName,
         photoURL: null,
         createdAt: new Date(),
+      });
+      // Instantly update React state so greeting shows the name right away
+      setUser({
+        uid: result.user.uid,
+        email: result.user.email,
+        displayName: displayName,
+        photoURL: null,
       });
     }
   };
