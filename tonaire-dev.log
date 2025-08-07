@@ -1,0 +1,12 @@
+
+> tonaire@0.1.0 dev /Users/khushikhanna/Development/tonaire
+> next dev --turbopack
+
+   ▲ Next.js 15.4.6 (Turbopack)
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.1.171:3001
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 816ms
+   Reload env: .env.local
