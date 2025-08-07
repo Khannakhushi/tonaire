@@ -19,8 +19,8 @@ https://tonaire.khyaatikhanna.com/
 
 - **Frontend**: Next.js 15 (App Router) + React 19
 - **Styling**: Tailwind CSS + Shadcn UI
-- **AI**: Google Gemini Pro API
-- **Backend**: Firebase (optional)
+- **AI**: OpenAI API
+- **Backend**: Firebase
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
 
