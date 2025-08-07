@@ -24,52 +24,6 @@ https://tonaire.khyaatikhanna.com/
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
 
-## 🚀 Quick Start
-
-1. **Clone the repository**
-
-   ```bash
-   git clone <repository-url>
-   cd tonaire
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   pnpm install
-   ```
-
-3. **Set up environment variables**
-   Create a `.env.local` file in the root directory:
-
-   ```env
-   # Google Gemini API (Required for AI generation)
-   GEMINI_API_KEY=your_gemini_api_key_here
-
-   # Firebase (Optional - for future features)
-   NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
-   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
-   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
-   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
-   NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-   ```
-
-4. **Get your Gemini API key**
-
-   - Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - Create a new API key
-   - Add it to your `.env.local` file
-
-5. **Run the development server**
-
-   ```bash
-   pnpm dev
-   ```
-
-6. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
 ## 🎨 Brand Identity
 
 - **Name**: Tonaire (tone + air) — sleek, French-inspired, soft power
@@ -115,29 +69,10 @@ Use Shadcn CLI to add new components:
 npx shadcn@latest add [component-name]
 ```
 
-### Project Structure
-
-```
-tonaire/
-├── app/                    # Next.js app directory
-│   ├── api/               # API routes
-│   ├── globals.css        # Global styles
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx          # Home page
-├── components/            # React components
-│   ├── ui/               # Shadcn UI components
-│   ├── ThemeProvider.tsx # Theme context
-│   └── ThemeToggle.tsx   # Dark/light mode toggle
-└── lib/                  # Utilities
-    ├── firebase.ts       # Firebase config
-    └── gemini.ts        # Gemini AI config
-```
-
 ## 🌟 Future Features
 
 - Chrome extension for rephrasing anywhere
 - Gmail + LinkedIn integration
-- Custom tone trainer (learn your personal style)
 - Analytics dashboard for social posts
 - Multi-language support
 
