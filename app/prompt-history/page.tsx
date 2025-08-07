@@ -27,7 +27,7 @@ export default function PromptHistoryPage() {
   );
   const prompts: Prompt[] = promptsSnapshot
     ? promptsSnapshot.docs
-        .map((doc) => ({ id: doc.id, ...(doc.data() as Prompt) }))
+        .map((doc) => ({ ...(doc.data() as Prompt), id: doc.id }))
         .sort(
           (a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0)
         )

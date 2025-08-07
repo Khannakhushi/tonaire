@@ -34,8 +34,12 @@ export function AuthModal({
     try {
       await loginWithGoogle();
       onOpenChange(false);
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError("An error occurred");
+      }
     } finally {
       setLoading(false);
     }
@@ -52,8 +56,12 @@ export function AuthModal({
         await signupWithEmail(email, password, displayName);
       }
       onOpenChange(false);
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError("An error occurred");
+      }
     } finally {
       setLoading(false);
     }

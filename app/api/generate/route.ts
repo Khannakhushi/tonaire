@@ -2,9 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { generateText } from "ai";
 import { openai } from "@ai-sdk/openai";
 
-const promptKeys = ["rephrase", "linkedin", "twitter", "instagram"] as const;
-type ContentType = (typeof promptKeys)[number];
-
 const toneInstructions = {
   rephrase: {
     professional:

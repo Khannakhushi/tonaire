@@ -13,18 +13,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { AuthModal } from "@/components/AuthModal";
 import { useUser } from "@/components/UserProvider";
@@ -132,7 +123,7 @@ export default function Home() {
       let data;
       try {
         data = await response.json();
-      } catch (e) {
+      } catch {
         throw new Error("Invalid server response");
       }
       if (!response.ok) {
@@ -147,8 +138,12 @@ export default function Home() {
         generation: data.content,
         createdAt: serverTimestamp(),
       });
-    } catch (error: any) {
-      setOutput(error.message || "Failed to generate content");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setOutput(error.message || "Failed to generate content");
+      } else {
+        setOutput("Failed to generate content");
+      }
     } finally {
       setIsGenerating(false);
     }
@@ -161,17 +156,10 @@ export default function Home() {
   const currentTones = toneOptions[activeTab as keyof typeof toneOptions] || [];
 
   const promptsRef = user ? collection(db, `users/${user.uid}/prompts`) : null;
-  const [promptsSnapshot, loadingPrompts, errorPrompts] = useCollection(
-    promptsRef ? promptsRef : undefined,
-    { snapshotListenOptions: { includeMetadataChanges: true } }
-  );
-  const prompts = promptsSnapshot
-    ? promptsSnapshot.docs
-        .map((doc) => ({ id: doc.id, ...doc.data() }))
-        .sort(
-          (a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0)
-        )
-    : [];
+  const [promptsSnapshot] = useCollection(promptsRef ? promptsRef : undefined, {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
+  // Removed unused variable 'prompts'
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
