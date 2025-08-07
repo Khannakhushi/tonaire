@@ -8,6 +8,23 @@ import { useUser } from "@/components/UserProvider";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { AuthModal } from "@/components/AuthModal";
+import {
+  Sparkles,
+  Star,
+  Rocket,
+  Zap,
+  Heart,
+  Smile,
+  Handshake,
+  ThumbsUp,
+  Laugh,
+  User,
+  Sun,
+  Moon,
+  MessageCircle,
+  Feather,
+  Quote,
+} from "lucide-react";
 
 export default function Landing() {
   const { user, loading } = useUser();
@@ -78,25 +95,7 @@ export default function Landing() {
           Your AI-powered tone stylist for emails, texts, and social posts.
           Effortlessly rewrite anything in the perfect vibe.
         </motion.p>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3 }}
-          className="relative w-full max-w-3xl mx-auto mb-16"
-        >
-          <div className="rounded-2xl shadow-2xl overflow-hidden border border-border/40 bg-white/80 dark:bg-card/80 backdrop-blur-md">
-            <div className="w-full h-[340px] flex items-center justify-center bg-gradient-to-br from-tonaire-rose/10 via-tonaire-gold/10 to-tonaire-plum/10">
-              <Image
-                src="/window.svg"
-                alt="App preview"
-                width={600}
-                height={320}
-                className="object-contain opacity-90"
-              />
-            </div>
-          </div>
-          <div className="absolute -inset-2 blur-2xl rounded-2xl bg-gradient-to-tr from-tonaire-rose/30 via-tonaire-gold/20 to-tonaire-plum/30 pointer-events-none" />
-        </motion.div>
+        <TonaireWingsAnimated />
 
         {/* Features Section */}
         <section className="w-full max-w-4xl mx-auto grid md:grid-cols-3 gap-8 mb-20">
@@ -189,6 +188,70 @@ export default function Landing() {
         onOpenChange={setAuthOpen}
         initialMode={isLogin ? "login" : "signup"}
       />
+    </div>
+  );
+}
+
+// TonaireHeroGrid: premium, magical, animated grid for Tonaire
+function TonaireWingsAnimated() {
+  return (
+    <div className="relative flex items-center justify-center w-full max-w-3xl mx-auto mb-16">
+      {/* Glowing background */}
+      <div className="absolute inset-0 blur-2xl bg-gradient-to-tr from-tonaire-rose/30 via-tonaire-gold/20 to-tonaire-plum/30 opacity-80" />
+      <motion.svg
+        width="700"
+        height="350"
+        viewBox="0 0 700 350"
+        fill="none"
+        initial={{ scale: 0.98, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="relative z-10"
+      >
+        <defs>
+          <linearGradient
+            id="wingGradient"
+            x1="0"
+            y1="0"
+            x2="700"
+            y2="0"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#F472B6" /> {/* tonaire-rose */}
+            <stop offset="0.5" stopColor="#FDE68A" /> {/* tonaire-gold */}
+            <stop offset="1" stopColor="#A78BFA" /> {/* tonaire-plum */}
+          </linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="8" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        {/* Left wing */}
+        <motion.path
+          d="M350,175 Q200,50 100,175 Q200,300 350,175 Q250,250 150,300"
+          stroke="url(#wingGradient)"
+          strokeWidth="8"
+          fill="none"
+          filter="url(#glow)"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+        />
+        {/* Right wing (mirrored) */}
+        <motion.path
+          d="M350,175 Q500,50 600,175 Q500,300 350,175 Q450,250 550,300"
+          stroke="url(#wingGradient)"
+          strokeWidth="8"
+          fill="none"
+          filter="url(#glow)"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+        />
+      </motion.svg>
     </div>
   );
 }
